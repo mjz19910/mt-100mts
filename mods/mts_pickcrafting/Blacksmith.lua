@@ -60,7 +60,7 @@ function Blacksmith.create_formspec()
     end
 
     local crystal_power = ""
-    if Blacksmith.get_total_pow() > 1 then 
+    if Blacksmith.get_total_pow() > 1 then
         crystal_power = "container[1,7.8;4,1]"..
             "item_image[0,0;1,1;mts_powercrystals:crystal]"..
             string.format("label[1.2,0.5;^%.3f]", Blacksmith.get_total_pow())..
