@@ -27,7 +27,7 @@ minetest.register_item(":", {
     }
 })
 
-local extra_max = minetest.settings:get("default_stack_max") * 100
+local extra_max = (minetest.settings:get("default_stack_max") or 99) * 100
 
 minetest.register_craftitem("mts_default:stick", {
     description = "Stick",
