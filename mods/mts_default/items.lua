@@ -27,25 +27,27 @@ minetest.register_item(":", {
     }
 })
 
-local stack_max = minetest.nodedef_default.stack_max * 100
+local default_stack_max = tonumber(minetest.settings:get("default_stack_max")) or 99
+
+local extended_stack_max = default_stack_max * 100
 
 minetest.register_craftitem("mts_default:stick", {
     description = "Stick",
     wield_image = "mts_default_stick.png",
     inventory_image = "mts_default_stick.png",
-    stack_max
+    stack_max = extended_stack_max,
 })
 
 minetest.register_craftitem("mts_default:pebble", {
     description = "Pebble",
     wield_image = "mts_default_pebble.png",
     inventory_image = "mts_default_pebble.png",
-    stack_max
+    stack_max = extended_stack_max,
 })
 
 minetest.register_craftitem("mts_default:rock", {
     description = "Rock",
     wield_image = "mts_default_rock.png",
     inventory_image = "mts_default_rock.png",
-    stack_max
+    stack_max = extended_stack_max,
 })
