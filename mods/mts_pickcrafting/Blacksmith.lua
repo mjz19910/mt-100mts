@@ -110,7 +110,16 @@ function Blacksmith.craft_pickaxe(player)
     if taken:get_count() >= 1 then
         local base_damage = Blacksmith.get_base_dps()
         local item = PickaxeGenerator.generate(base_damage)
-        inv:add_item("main", item)
+        local left = inv:add_item("main", item)
+        if not left:is_empty() then
+            local pos = player:get_pos()
+            local p = vector.offset(pos,
+				math.random()/2-0.25,
+				math.random()/2-0.25,
+				math.random()/2-0.25
+			)
+            minetest.add_item(p, left)
+        end
         minetest.sound_play("craft", {pitch = 0.8 + 0.4 * math.random()})
     else
         minetest.chat_send_all(minetest.colorize("red", "Not enough Sticks!"))
