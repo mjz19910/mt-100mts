@@ -25,7 +25,7 @@ minetest.register_item(":", {
             },
             oddly_breakable_by_hand = {
                 uses = 0,
-                times={[1] = 0}
+                times={[2] = 0}
             }
         }
     }
