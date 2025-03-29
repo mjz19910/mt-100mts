@@ -115,12 +115,15 @@ function Blacksmith.craft_pickaxe(player)
 		local left = inv:add_item("main", item)
 		if not left:is_empty() then
 			local pos = player:get_pos()
-			local p = vector.offset(pos,
-				math.random()/2-0.25,
-				math.random()/2-0.25,
-				math.random()/2-0.25
-			)
-			local ref = minetest.add_item(p, left)
+			local p = table.copy(pos)
+			p.y = p.y + 1.2
+			local obj = minetest.add_item(p, left)
+			local dir = player:get_look_dir()
+			dir.x = dir.x * 2.9
+			dir.y = dir.y * 2.9 + 2
+			dir.z = dir.z * 2.9
+			obj:set_velocity(dir)
+			obj:get_luaentity().dropped_by = player:get_player_name()
 		end
 		minetest.sound_play("craft", {pitch = 0.8 + 0.4 * math.random()})
 	else
