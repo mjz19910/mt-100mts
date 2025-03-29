@@ -103,6 +103,10 @@ function Blacksmith.show_formspec(name)
 	minetest.show_formspec(name, "mts_pickcrafting:blacksmith", Blacksmith.create_formspec())
 end
 
+local function rand_in_range(range)
+	return math.random(range[1], range[2])
+end
+
 function Blacksmith.craft_pickaxe(player)
 	local inv = player:get_inventory()
 
@@ -122,6 +126,10 @@ function Blacksmith.craft_pickaxe(player)
 			dir.x = dir.x * 2.9
 			dir.y = dir.y * 2.9 + 2
 			dir.z = dir.z * 2.9
+			local random_velocity_range = {-0.8, 0.8}
+			dir.x = dir.x + rand_in_range(random_velocity_range)
+			dir.y = dir.y + rand_in_range(random_velocity_range)
+			dir.z = dir.z + rand_in_range(random_velocity_range)
 			obj:set_velocity(dir)
 			obj:get_luaentity().dropped_by = player:get_player_name()
 		end
