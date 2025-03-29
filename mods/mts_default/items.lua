@@ -1,5 +1,5 @@
 minetest.register_item(":", {
-    type="none",
+    type = "none",
     wield_image = "hand.png",
     wield_scale = {x = 0.55, y = 0.95, z = 5},
     range = 4,
