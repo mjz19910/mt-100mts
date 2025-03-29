@@ -22,6 +22,10 @@ minetest.register_item(":", {
             dig_immediate = {
                 uses = 0,
                 times = {[1] = 0}
+            },
+            oddly_breakable_by_hand = {
+                uses = 0,
+                times={[1] = 0}
             }
         }
     }
